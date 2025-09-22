@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Piero Elías - Mi Pasión Eterna</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&family=Playfair+Display:wght@400;500;700&display=swap');
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      color: #f8e6ff;
+    }
+    .font-playfair {
+      font-family: 'Playfair Display', serif;
+    }
+    .title-text-gradient {
+      background: linear-gradient(45deg, #d4af37, #ff6b9d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+    .love-btn-bg {
+      background: linear-gradient(45deg, #d4af37, #ff6b9d);
+    }
+    .birthday-btn-bg {
+      background: linear-gradient(45deg, #ff6b9d, #d4af37);
+    }
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-content-love, .modal-content-birthday {
+      background: rgba(45, 20, 45, 0.95);
+      padding: 2.5rem;
+      border-radius: 1.5rem;
+      border: 2px solid #d4af37;
+      position: relative;
+      max-width: 90%;
+      width: 500px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 0.8; }
+      100% { transform: translateY(-1000px) scale(1.5); opacity: 0; }
+    }
+    @keyframes floatUpFlower {
+      0% { transform: translateY(0) scale(1); opacity: 0.8; }
+      100% { transform: translateY(-1000px) scale(1.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body class="min-h-screen relative">
+
+  <div
+    class="absolute inset-0"
+    style="background: linear-gradient(135deg, #0a0a0a 0%, #1a0e2e 25%, #2d1b3d 50%, #1a0f1f 75%, #0f0f23 100%);"
+  ></div>
+  <div
+    class="absolute inset-0 opacity-20"
+    style="background-image: radial-gradient(circle at 25% 25%, #ff6b9d 0%, transparent 50%), radial-gradient(circle at 75% 75%, #d4af37 0%, transparent 50%);"
+  ></div>
+  <div class="absolute inset-0 opacity-15">
+    <div class="absolute top-16 left-12" style="color: #d4af37;">
+      <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C12 2 15 5 15 8.5C15 10.5 13.5 12 12 12C10.5 12 9 10.5 9 8.5C9 5 12 2 12 2Z" /><path d="M12 12C12 12 15 9 17.5 9C19.5 9 21 10.5 21 12C21 13.5 19.5 15 17.5 15C15 15 12 12 12 12Z" /><path d="M12 12C12 12 15 15 15 17.5C15 19.5 13.5 21 12 21C10.5 21 9 19.5 9 17.5C9 15 12 12 12 12Z" /><path d="M12 12C12 12 9 15 6.5 15C4.5 15 3 13.5 3 12C3 10.5 4.5 9 6.5 9C9 9 12 12 12 12Z" /><circle cx="12" cy="12" r="2" /></svg>
+    </div>
+    <div class="absolute top-40 right-16" style="color: #ff6b9d;">
+      <svg class="w-6 h-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5A5.5 5.5 0 0 1 7.5 3a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1 5.5-5.5a5.5 5.5 0 0 1 5.5 5.5c0 3.78-3.4 6.86-8.55 11.54z" /></svg>
+    </div>
+    <div class="absolute bottom-32 left-20" style="color: #f8e6ff;">
+      <svg class="w-10 h-10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C8 3 5 6 5 10C5 14 8 17 12 17C16 17 19 14 19 10C19 6 16 3 12 3Z" /><path d="M12 17C12 17 10 19 8 19C6 19 4 17 4 15C4 13 6 11 8 11C10 11 12 13 12 17Z" opacity="0.7" /><path d="M12 17C12 17 14 19 16 19C18 19 20 17 20 15C20 13 18 11 16 11C14 11 12 13 12 17Z" opacity="0.7" /><circle cx="12" cy="10" r="3" opacity="0.5" /></svg>
+    </div>
+    <div class="absolute bottom-48 right-8" style="color: #e6ccff;">
+      <svg class="w-7 h-7" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5A5.5 5.5 0 0 1 7.5 3a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1 5.5-5.5a5.5 5.5 0 0 1 5.5 5.5c0 3.78-3.4 6.86-8.55 11.54z" /></svg>
+    </div>
+  </div>
+
+  <div id="floating-hearts-container" class="absolute inset-0 z-0"></div>
+  <div id="floating-flowers-container" class="absolute inset-0 z-0"></div>
+
+  <div class="relative z-10 flex flex-col items-center justify-center min-h-screen p-4">
+    <div class="text-center mb-8">
+      <h1 class="font-playfair text-5xl md:text-7xl mb-4 font-bold title-text-gradient">
+        Piero Elías
+      </h1>
+      <p class="font-cormorant text-2xl md:text-3xl mb-2 font-medium" style="color: #ff6b9d;">
+        Mi Pasión Eterna 💕
+      </p>
+    </div>
+
+    <div class="mb-8">
+      <div class="relative">
+        <!-- Imagen subida por el usuario -->
+        <img
+          src="WhatsApp Image 2025-09-13 at 12.08.51 PM.jpeg"
+          alt="Pareja romántica - Nuestro amor"
+          class="w-72 h-96 md:w-80 md:h-[480px] object-cover rounded-3xl shadow-2xl border-4"
+          style="border-color: #d4af37; box-shadow: 0 0 30px rgba(212, 175, 55, 0.4), 0 0 60px rgba(255, 107, 157, 0.3), 0 0 100px rgba(248, 230, 255, 0.2);"
+        />
+        <div class="absolute -top-3 -right-3">
+          <div class="animate-spin" style="animation-duration: 3s;">
+            <svg class="w-10 h-10" style="color: #d4af37;" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.9 14.9 11 12l.6-1.6c.1-.2.2-.3.4-.4.6-.2 1.2.1 1.4.6l.6 1.6 1.1 2.9c.4 1-.2 2.1-1.2 2.5-.3.1-.6.2-.9.2a.9.9 0 0 1-.9-.3L11 16.1l-1-2.5c-.3-.8 0-1.7.7-2 .1-.1.3-.1.4-.1.7.1 1.4.8 1.4 1.4.1.3.1.6 0 .9L12 12l-.7 1.9c-.3.8-.1 1.7.5 2.2a.9.9 0 0 0 .9.2l1.1-.3" /><path d="M13.8 2.3c.4-1 .9-1.3 1.5-1.3.6 0 1.1.3 1.5 1.3.4 1 .9 1.8 1.5 2.5.6.8 1.2 1.6 1.8 2.5.6.8 1 1.7 1 2.7 0 1-.4 1.9-1 2.7-.6.8-1.2 1.6-1.8 2.5-.6.8-1.1 1.5-1.5 2.5-.4 1-.9 1.3-1.5 1.3-.6 0-1.1-.3-1.5-1.3-.4-1-.9-1.8-1.5-2.5-.6-.8-1.2-1.6-1.8-2.5-.6-.8-1-1.7-1-2.7 0-1 .4-1.9 1-2.7.6-.8 1.2-1.6 1.8-2.5.6-.8 1.1-1.5 1.5-2.5Z" /></svg>
+          </div>
+        </div>
+        <div class="absolute -bottom-3 -left-3">
+          <div class="animate-pulse" style="animation-duration: 2s;">
+            <svg class="w-8 h-8" style="color: #ff6b9d;" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5A5.5 5.5 0 0 1 7.5 3a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1 5.5-5.5a5.5 5.5 0 0 1 5.5 5.5c0 3.78-3.4 6.86-8.55 11.54z" /></svg>
+          </div>
+        </div>
+        <div
+          class="absolute inset-0 rounded-3xl pointer-events-none"
+          style="background: radial-gradient(circle at center, transparent 60%, rgba(212, 175, 55, 0.1) 70%, rgba(255, 107, 157, 0.1) 80%, transparent 90%);"
+        ></div>
+      </div>
+    </div>
+
+    <div class="mb-8">
+      <div class="p-6 shadow-xl border-2 backdrop-blur-sm rounded-xl"
+        style="background: linear-gradient(135deg, rgba(45, 27, 61, 0.8) 0%, rgba(26, 15, 31, 0.9) 100%); border-color: #d4af37; box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);"
+      >
+        <div class="flex items-center justify-center space-x-3">
+          <svg class="w-6 h-6" style="color: #d4af37;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2" /><line x1="16" x2="16" y1="2" y2="6" /><line x1="8" x2="8" y1="2" y2="6" /><line x1="3" x2="21" y1="10" y2="10" /></svg>
+          <span class="font-cormorant text-xl font-medium" style="color: #f8e6ff;">
+            29 de Septiembre
+          </span>
+          <svg class="w-6 h-6" style="color: #d4af37;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1" /><path d="M12 8v13" /><path d="M19 12v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9" /><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2" /><path d="M12 22h4.5a2.5 2.5 0 0 0 0-5H12v5Z" /><path d="M12 22h-4.5a2.5 2.5 0 0 1 0-5H12v5Z" /></svg>
+        </div>
+        <p class="text-center mt-2 font-cormorant" style="color: #ff6b9d;">
+          ¡Tu día especial!
+        </p>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-4 mb-8">
+      <button
+        id="loveLetterBtn"
+        class="font-cormorant text-white px-8 py-4 rounded-full shadow-xl transform transition-all duration-300 hover:scale-105 border-2 love-btn-bg"
+        style="border-color: #d4af37; box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);"
+      >
+        <svg class="w-5 h-5 mr-2 inline-block" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5A5.5 5.5 0 0 1 7.5 3a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1 5.5-5.5a5.5 5.5 0 0 1 5.5 5.5c0 3.78-3.4 6.86-8.55 11.54z" /></svg>
+        Carta de Amor
+      </button>
+      <button
+        id="birthdayBtn"
+        class="font-cormorant text-white px-8 py-4 rounded-full shadow-xl transform transition-all duration-300 hover:scale-105 border-2 birthday-btn-bg"
+        style="border-color: #ff6b9d; box-shadow: 0 0 20px rgba(255, 107, 157, 0.4);"
+      >
+        <svg class="w-5 h-5 mr-2 inline-block" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1" /><path d="M12 8v13" /><path d="M19 12v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9" /><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2" /><path d="M12 22h4.5a2.5 2.5 0 0 0 0-5H12v5Z" /><path d="M12 22h-4.5a2.5 2.5 0 0 1 0-5H12v5Z" /></svg>
+        Celebrar Cumpleaños
+      </button>
+    </div>
+
+    <div class="text-center max-w-2xl">
+      <p class="font-cormorant text-lg leading-relaxed" style="color: #f8e6ff;">
+        Eres mi universo completo, Piero. Tu presencia
+        ilumina mi mundo y tu amor es el fuego que enciende
+        mi alma. En este día tan especial quiero que sepas
+        que eres mi mayor tesoro, mi pasión más ardiente y
+        mi amor más profundo.
+      </p>
+      <p class="font-playfair text-2xl mt-4 font-medium" style="color: #ff6b9d;">
+        ¡Te amo con toda mi alma! 💖✨
+      </p>
+    </div>
+  </div>
+
+  <!-- Contenedores para los modales -->
+  <div id="love-modal" class="modal-overlay hidden">
+    <div class="modal-content-love">
+      <button id="closeLoveModal" class="modal-close-btn">&times;</button>
+      <div class="text-center">
+        <svg class="w-12 h-12 mx-auto mb-4" style="color: #d4af37;" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /></svg>
+        <p id="loveMessage" class="font-cormorant text-xl text-white leading-relaxed"></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="birthday-modal" class="modal-overlay hidden">
+    <div class="modal-content-birthday">
+      <button id="closeBirthdayModal" class="modal-close-btn">&times;</button>
+      <div class="text-center">
+        <h2 class="font-playfair text-3xl font-bold text-white mb-4">¡Feliz Cumpleaños, Culé!</h2>
+        <p class="font-cormorant text-lg text-white mb-6">Que la pasión del Barça ilumine tu nuevo año. ¡Te quiero!</p>
+        <img
+          src="descarga (3).jpg"
+          alt="Escudo del FC Barcelona"
+          class="mx-auto rounded-xl shadow-lg mb-4"
+        />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Mensajes de amor para el modal
+      const loveMessages = [
+        "Mi amor, eres la pasión que enciende mi alma y la ternura que calma mi corazón",
+        "En tus brazos encuentro mi paraíso, en tus besos mi eternidad",
+        "Eres el fuego que consume mis sentidos y la brisa que acaricia mi ser",
+        "Tu mirada es mi perdición más dulce, mi adicción más hermosa",
+        "Contigo descubrí que el amor puede ser salvaje y tierno a la vez",
+        "Eres mi deseo hecho realidad, mi fantasía más íntima",
+        "Tu amor es mi droga más pura, mi éxtasis más profundo",
+        "Eres mi musa, mi inspiración, mi razón de existir, Piero",
+      ];
+
+      // Lógica para los corazones flotantes
+      const floatingHeartsContainer = document.getElementById("floating-hearts-container");
+      if (floatingHeartsContainer) {
+        setInterval(() => {
+          const element = document.createElement("div");
+          element.textContent = "💖";
+          element.className = "absolute z-0";
+          element.style.left = `${Math.random() * 100}vw`;
+          element.style.bottom = "-10px";
+          element.style.animation = `floatUp ${Math.random() * 5 + 5}s linear infinite`;
+          element.style.animationDelay = `${Math.random() * 2}s`;
+          element.style.fontSize = `${Math.random() * 20 + 10}px`;
+          element.style.color = "#ff6b9d";
+          element.style.opacity = "0.8";
+          floatingHeartsContainer.appendChild(element);
+
+          setTimeout(() => {
+            element.remove();
+          }, 10000);
+        }, 500);
+      }
+
+      // Lógica para las flores flotantes
+      const floatingFlowersContainer = document.getElementById("floating-flowers-container");
+      if (floatingFlowersContainer) {
+        setInterval(() => {
+          const element = document.createElement("div");
+          element.textContent = "🌸";
+          element.className = "absolute z-0";
+          element.style.left = `${Math.random() * 100}vw`;
+          element.style.bottom = "-10px";
+          element.style.animation = `floatUpFlower ${Math.random() * 5 + 5}s linear infinite`;
+          element.style.animationDelay = `${Math.random() * 2}s`;
+          element.style.fontSize = `${Math.random() * 20 + 10}px`;
+          element.style.color = "#d4af37";
+          element.style.opacity = "0.8";
+          floatingFlowersContainer.appendChild(element);
+
+          setTimeout(() => {
+            element.remove();
+          }, 10000);
+        }, 500);
+      }
+
+      // Lógica para el modal de la carta de amor
+      const loveLetterBtn = document.getElementById("loveLetterBtn");
+      const loveModal = document.getElementById("love-modal");
+      const closeLoveModalBtn = document.getElementById("closeLoveModal");
+      const loveMessageElement = document.getElementById("loveMessage");
+
+      if (loveLetterBtn) {
+        loveLetterBtn.addEventListener("click", () => {
+          const randomMessage = loveMessages[Math.floor(Math.random() * loveMessages.length)];
+          if (loveMessageElement) {
+            loveMessageElement.textContent = randomMessage;
+          }
+          if (loveModal) {
+            loveModal.classList.remove("hidden");
+          }
+        });
+      }
+
+      if (closeLoveModalBtn) {
+        closeLoveModalBtn.addEventListener("click", () => {
+          if (loveModal) {
+            loveModal.classList.add("hidden");
+          }
+        });
+      }
+
+      // Lógica para el modal de cumpleaños
+      const birthdayBtn = document.getElementById("birthdayBtn");
+      const birthdayModal = document.getElementById("birthday-modal");
+      const closeBirthdayModalBtn = document.getElementById("closeBirthdayModal");
+
+      if (birthdayBtn) {
+        birthdayBtn.addEventListener("click", () => {
+          if (birthdayModal) {
+            birthdayModal.classList.remove("hidden");
+          }
+        });
+      }
+
+      if (closeBirthdayModalBtn) {
+        closeBirthdayModalBtn.addEventListener("click", () => {
+          if (birthdayModal) {
+            birthdayModal.classList.add("hidden");
+          }
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
